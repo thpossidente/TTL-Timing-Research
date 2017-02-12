@@ -1,1 +1,5 @@
 
+#install.packages('xlsx')
+library('xlsx')
+data <- read.xlsx("C:/Users/research/Desktop/BBTKTestData/ExcelData_OpticalandTTL_60sec.xlsx", 1)
+

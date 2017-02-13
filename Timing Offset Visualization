@@ -1,5 +1,9 @@
-
 #install.packages('xlsx')
 library('xlsx')
 data <- read.xlsx("C:/Users/research/Desktop/BBTKTestData/ExcelData_OpticalandTTL_60sec.xlsx", 1)
 
+data <- data$Delay..ms.
+data <- data[-1]
+hist(data, main = "Frequency Distribution of Time Offset Between TTL and Opto Sensor", xlab = "Offest Times (ms)", breaks = 15)
+hist(data, main = "Porbability Density of Time Offset Between TTL and Opto Sensor", xlab = "Offest Times (ms)", breaks = 15, prob = T)
+lines(density(data))

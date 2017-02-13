@@ -1,11 +1,9 @@
-# For histograms to be generated, there must be a column in the imported excel file labeled "Delay (ms)". 
-# Or change line 8 to select the column that contains the offset/delay times
 
 #install.packages('xlsx')
 library('xlsx')
 data <- read.xlsx("C:/Users/research/Desktop/BBTKTestData/ExcelData_OpticalandTTL_60sec.xlsx", 1) #put excel spreadsheet location here
 
-data <- data$Delay..ms.
+data <- data$Delay..ms. # change name of column if necessary. As is, this will select the column labeled ("Delay (ms)")
 data <- data[-1] # Only necessary if first value in offset/delay times is "NA"
 hist(data, main = "Frequency Distribution of Time Offset Between TTL and Opto Sensor", xlab = "Offest Times (ms)", breaks = 15)
 hist(data, main = "Porbability Density of Time Offset Between TTL and Opto Sensor", xlab = "Offest Times (ms)", breaks = 15, prob = T)

@@ -1,10 +1,12 @@
+# Before importing data, remove all commas from txt file using the Replace function in Notepad
 
-#install.packages('xlsx')
-library('xlsx')
-data <- read.xlsx("C:/Users/research/Desktop/BBTKTestData/ExcelData_OpticalandTTL_60sec.xlsx", 1) #put excel spreadsheet location here
+data <- read.table("C:/Users/research/Desktop/BBTKTestData/TTLandOptic30sec.txt", header=F, fill = T, col.names = c("Opto Onset", "Opto Offset", "Opto Duration", "TTL Onset", "TTL Offset", "TTL Duration"), dec='.', skip=1)
+for(i in 1:nrow(data)){
+  data$Delay[i] <- data$Opto.Onset[i] - data$TTL.Onset[i]
+}
 
-data <- data$Delay..ms. # change name of column if necessary. As is, this will select the column labeled ("Delay (ms)")
-data <- data[-1] # Only necessary if first value in offset/delay times is "NA"
-hist(data, main = "Frequency Distribution of Time Offset Between TTL and Opto Sensor", xlab = "Offest Times (ms)", breaks = 15)
-hist(data, main = "Porbability Density of Time Offset Between TTL and Opto Sensor", xlab = "Offest Times (ms)", breaks = 15, prob = T)
-lines(density(data))
+
+hist(data$Delay, main = "Frequency Distribution of Time Offset Between TTL and Opto Sensor", xlab = "Offest Times (ms)", breaks = 15, xlim=c(45,75))
+hist(data$Delay, main = "Porbability Density of Time Offset Between TTL and Opto Sensor", xlab = "Offest Times (ms)", breaks = 15, prob = T, xlim=c(45,75))
+lines(density(data$Delay, na.rm=T))
+

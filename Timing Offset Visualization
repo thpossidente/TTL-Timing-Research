@@ -1,6 +1,14 @@
 # Before importing data, remove all commas from txt file using the Replace function in Notepad
 
 data <- read.table("C:/Users/research/Desktop/BBTKTestData/TTLandOptic30sec.txt", header=F, fill = T, col.names = c("Opto Onset", "Opto Offset", "Opto Duration", "TTL Onset", "TTL Offset", "TTL Duration"), dec='.', skip=1)
+data$Opto.Onset <- as.numeric(gsub(',', '', data$Opto.Onset))
+data$Opto.Offset <- as.numeric(gsub(',', '', data$Opto.Offset))
+data$Opto.Duration <- as.numeric(gsub(',', '', data$Opto.Duration))
+data$TTL.Onset <- as.numeric(gsub(',', '', data$TTL.Onset))
+data$TTL.Offset <- as.numeric(gsub(',', '', data$TTL.Offset))
+data$TTL.Duration <- as.numeric(gsub(',', '', data$TTL.Duration))
+
+
 for(i in 1:nrow(data)){
   data$Delay[i] <- data$Opto.Onset[i] - data$TTL.Onset[i]
 }

@@ -1,4 +1,3 @@
-# Before importing data, remove all commas from txt file using the Replace function in Notepad
 
 data <- read.table("C:/Users/research/Desktop/BBTKTestData/TTLandOptic30sec.txt", header=F, fill = T, col.names = c("Opto Onset", "Opto Offset", "Opto Duration", "TTL Onset", "TTL Offset", "TTL Duration"), dec='.', skip=1)
 data$Opto.Onset <- as.numeric(gsub(',', '', data$Opto.Onset))

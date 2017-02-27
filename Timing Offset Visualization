@@ -7,13 +7,18 @@ data$TTL.Onset <- as.numeric(gsub(',', '', data$TTL.Onset))
 data$TTL.Offset <- as.numeric(gsub(',', '', data$TTL.Offset))
 data$TTL.Duration <- as.numeric(gsub(',', '', data$TTL.Duration))
 
-
-for(i in 1:nrow(data)){
-  data$Delay[i] <- data$Opto.Onset[i] - data$TTL.Onset[i]
+if(data$TTL.Onset[1] - data$Opto.Onset[1] > 0){
+  for(i in 1:nrow(data)){
+    data$Delay[i] <- data$Opto.Onset[i + 1] - data$TTL.Onset[i]
+  }
+} else{
+    for(h in 1:nrow(data)){
+      data$Delay[h] <- data$Opto.Onset[h] - data$TTL.Onset[h]
+    }
 }
-
 
 hist(data$Delay, main = "Frequency Distribution of Time Offset Between TTL and Opto Sensor", xlab = "Offest Times (ms)", breaks = 15, xlim=c(45,75))
 hist(data$Delay, main = "Porbability Density of Time Offset Between TTL and Opto Sensor", xlab = "Offest Times (ms)", breaks = 15, prob = T, xlim=c(45,75))
 lines(density(data$Delay, na.rm=T))
+
 

@@ -1,5 +1,5 @@
 
-data <- read.table("C:/Users/research/Desktop/BBTKTestData/TTLandOptic30sec.txt", header=F, fill = T, col.names = c("Opto Onset", "Opto Offset", "Opto Duration", "TTL Onset", "TTL Offset", "TTL Duration"), dec='.', skip=1)
+data <- read.table("C:/Users/research/Desktop/BBTKTestData/TTLandOptic30min.txt", header=F, fill = T, col.names = c("Opto Onset", "Opto Offset", "Opto Duration", "TTL Onset", "TTL Offset", "TTL Duration"), dec='.', skip=1)
 data$Opto.Onset <- as.numeric(gsub(',', '', data$Opto.Onset))
 data$Opto.Offset <- as.numeric(gsub(',', '', data$Opto.Offset))
 data$Opto.Duration <- as.numeric(gsub(',', '', data$Opto.Duration))

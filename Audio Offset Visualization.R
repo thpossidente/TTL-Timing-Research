@@ -1,5 +1,5 @@
 
-data <- read.table("C:/Users/research/Desktop/BBTKTestData/TTLandAudio80sec.txt", header=F, fill = T, col.names = c("TTL Onset", "TTL Offset", "TTL Duration", "Mic Onset", "Mic Offset", "Mic Duration"), dec='.', skip=1)
+data <- read.table("C:/Users/research/Desktop/BBTKTestData/TTLandAudio30min.txt", header=F, fill = T, col.names = c("TTL Onset", "TTL Offset", "TTL Duration", "Mic Onset", "Mic Offset", "Mic Duration"), dec='.', skip=1)
 data$TTL.Onset <- as.numeric(gsub(',', '', data$TTL.Onset))
 data$TTL.Offset <- as.numeric(gsub(',', '', data$TTL.Offset))
 data$TTL.Duration <- as.numeric(gsub(',', '', data$TTL.Duration))
